@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mom's Menu</title>
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+  <header>
+    <h1>Mom's Menu</h1>
+    <p class="subtitle">Daily meal planning for the family</p>
+  </header>
+
+  <nav>
+    <button class="nav-btn active" data-tab="today">Today</button>
+    <button class="nav-btn" data-tab="weekly">Weekly Plan</button>
+    <button class="nav-btn" data-tab="dishes">Manage Dishes</button>
+    <button class="nav-btn" data-tab="preferences">Preferences</button>
+    <button class="nav-btn" data-tab="history">History</button>
+  </nav>
+
+  <main>
+    <!-- Today's Menu -->
+    <section id="today" class="tab-content active">
+      <div class="card">
+        <h2>Today's Menu</h2>
+        <div id="today-menu" class="menu-display">Loading...</div>
+        <div class="actions">
+          <button onclick="regenerateMenu()" class="btn">🔄 New Suggestion</button>
+          <button onclick="sendToday()" class="btn btn-primary">📱 Send via WhatsApp</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- Weekly Plan -->
+    <section id="weekly" class="tab-content">
+      <div class="card">
+        <h2>Next Week's Plan</h2>
+        <div id="weekly-plan">Loading...</div>
+        <div class="actions">
+          <button onclick="loadWeekly()" class="btn">🔄 Regenerate</button>
+          <button onclick="sendWeekly()" class="btn btn-primary">📱 Send via WhatsApp</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- Manage Dishes -->
+    <section id="dishes" class="tab-content">
+      <div class="card">
+        <h2>Dishes</h2>
+        <div class="add-dish-form">
+          <h3>Add New Dish</h3>
+          <form id="add-dish-form" onsubmit="addDish(event)">
+            <input type="text" id="dish-name" placeholder="Dish name" required>
+            <select id="dish-category">
+              <option value="veg">Veg</option>
+              <option value="nonveg">Non-Veg</option>
+            </select>
+            <select id="dish-type" style="display:none">
+              <option value="egg">Egg</option>
+              <option value="fish">Fish</option>
+              <option value="chicken">Chicken</option>
+            </select>
+            <div class="checkbox-group">
+              <label><input type="checkbox" name="likes" value="Ramesh" checked> Ramesh</label>
+              <label><input type="checkbox" name="likes" value="Siva" checked> Siva</label>
+              <label><input type="checkbox" name="likes" value="Gowthami" checked> Gowthami</label>
+              <label><input type="checkbox" name="likes" value="Sagar"> Sagar</label>
+            </div>
+            <label><input type="checkbox" id="no-veggies"> No veggies needed</label>
+            <button type="submit" class="btn btn-primary">Add Dish</button>
+          </form>
+        </div>
+        <h3>Veg Dishes</h3>
+        <div id="veg-dishes" class="dish-list"></div>
+        <h3>Non-Veg Dishes</h3>
+        <div id="nonveg-dishes" class="dish-list"></div>
+      </div>
+    </section>
+
+    <!-- Preferences -->
+    <section id="preferences" class="tab-content">
+      <div class="card">
+        <h2>Preferences</h2>
+        <div id="preferences-content">Loading...</div>
+      </div>
+    </section>
+
+    <!-- History -->
+    <section id="history" class="tab-content">
+      <div class="card">
+        <h2>Recent Meals</h2>
+        <div id="history-content">Loading...</div>
+      </div>
+    </section>
+  </main>
+
+  <div id="toast" class="toast hidden"></div>
+  <script src="/js/app.js"></script>
+</body>
+</html>

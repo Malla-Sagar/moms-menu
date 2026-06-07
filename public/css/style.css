@@ -1,0 +1,303 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  background: #f5f0e8;
+  color: #333;
+  min-height: 100vh;
+}
+
+header {
+  background: linear-gradient(135deg, #e8683a, #d4542e);
+  color: white;
+  padding: 1.5rem;
+  text-align: center;
+}
+
+header h1 {
+  font-size: 1.8rem;
+}
+
+.subtitle {
+  opacity: 0.9;
+  margin-top: 0.3rem;
+}
+
+nav {
+  display: flex;
+  gap: 0;
+  background: white;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  overflow-x: auto;
+}
+
+.nav-btn {
+  flex: 1;
+  padding: 0.8rem 1rem;
+  border: none;
+  background: white;
+  cursor: pointer;
+  font-size: 0.85rem;
+  font-weight: 500;
+  color: #666;
+  border-bottom: 3px solid transparent;
+  transition: all 0.2s;
+  white-space: nowrap;
+}
+
+.nav-btn:hover {
+  background: #fff5f2;
+}
+
+.nav-btn.active {
+  color: #e8683a;
+  border-bottom-color: #e8683a;
+}
+
+main {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 1rem;
+}
+
+.card {
+  background: white;
+  border-radius: 12px;
+  padding: 1.5rem;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+}
+
+.card h2 {
+  margin-bottom: 1rem;
+  color: #e8683a;
+}
+
+.card h3 {
+  margin: 1.5rem 0 0.8rem;
+  color: #555;
+  font-size: 1rem;
+}
+
+.tab-content {
+  display: none;
+}
+
+.tab-content.active {
+  display: block;
+}
+
+.menu-display {
+  padding: 1rem;
+  background: #fef9f5;
+  border-radius: 8px;
+  border-left: 4px solid #e8683a;
+  white-space: pre-line;
+  line-height: 1.6;
+}
+
+.actions {
+  display: flex;
+  gap: 0.8rem;
+  margin-top: 1rem;
+  flex-wrap: wrap;
+}
+
+.btn {
+  padding: 0.6rem 1.2rem;
+  border: 2px solid #e8683a;
+  background: white;
+  color: #e8683a;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: 500;
+  transition: all 0.2s;
+}
+
+.btn:hover {
+  background: #fff5f2;
+}
+
+.btn-primary {
+  background: #e8683a;
+  color: white;
+}
+
+.btn-primary:hover {
+  background: #d4542e;
+}
+
+.btn-danger {
+  border-color: #dc3545;
+  color: #dc3545;
+}
+
+.btn-danger:hover {
+  background: #dc3545;
+  color: white;
+}
+
+.dish-list {
+  display: grid;
+  gap: 0.5rem;
+}
+
+.dish-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.7rem 1rem;
+  background: #fef9f5;
+  border-radius: 8px;
+  border: 1px solid #f0e6de;
+}
+
+.dish-item .dish-name {
+  font-weight: 500;
+}
+
+.dish-item .dish-meta {
+  font-size: 0.8rem;
+  color: #888;
+}
+
+.dish-item .dish-actions {
+  display: flex;
+  gap: 0.3rem;
+}
+
+.dish-item button {
+  padding: 0.3rem 0.6rem;
+  font-size: 0.75rem;
+  border-radius: 4px;
+}
+
+.add-dish-form {
+  padding: 1rem;
+  background: #f9f9f9;
+  border-radius: 8px;
+  margin-bottom: 1rem;
+}
+
+.add-dish-form input[type="text"],
+.add-dish-form select {
+  padding: 0.5rem;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  margin: 0.3rem 0;
+  width: 100%;
+}
+
+.checkbox-group {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.8rem;
+  margin: 0.5rem 0;
+}
+
+.checkbox-group label {
+  font-size: 0.85rem;
+}
+
+.weekly-day {
+  padding: 0.6rem;
+  border-bottom: 1px solid #f0e6de;
+  display: flex;
+  gap: 0.5rem;
+  align-items: baseline;
+}
+
+.weekly-day:last-child {
+  border-bottom: none;
+}
+
+.weekly-day .day-name {
+  font-weight: 600;
+  min-width: 100px;
+}
+
+.weekly-day .day-type {
+  font-size: 0.8rem;
+  padding: 0.1rem 0.4rem;
+  border-radius: 4px;
+  background: #d4edda;
+  color: #155724;
+}
+
+.weekly-day .day-type.nonveg {
+  background: #f8d7da;
+  color: #721c24;
+}
+
+.preferences-section {
+  margin-bottom: 1.5rem;
+}
+
+.preferences-section h3 {
+  margin-bottom: 0.5rem;
+}
+
+.day-type-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+  gap: 0.5rem;
+}
+
+.day-type-item {
+  padding: 0.5rem;
+  border-radius: 6px;
+  text-align: center;
+  font-size: 0.85rem;
+}
+
+.day-type-item.veg {
+  background: #d4edda;
+}
+
+.day-type-item.nonveg {
+  background: #f8d7da;
+}
+
+.history-item {
+  display: flex;
+  justify-content: space-between;
+  padding: 0.5rem 0;
+  border-bottom: 1px solid #f0f0f0;
+  font-size: 0.9rem;
+}
+
+.toast {
+  position: fixed;
+  bottom: 2rem;
+  left: 50%;
+  transform: translateX(-50%);
+  background: #333;
+  color: white;
+  padding: 0.8rem 1.5rem;
+  border-radius: 8px;
+  font-size: 0.9rem;
+  z-index: 1000;
+  transition: opacity 0.3s;
+}
+
+.toast.hidden {
+  opacity: 0;
+  pointer-events: none;
+}
+
+@media (max-width: 600px) {
+  .nav-btn {
+    font-size: 0.75rem;
+    padding: 0.7rem 0.5rem;
+  }
+  .actions {
+    flex-direction: column;
+  }
+  .btn {
+    width: 100%;
+    text-align: center;
+  }
+}

@@ -1,0 +1,16 @@
+{
+  "name": "moms-menu",
+  "version": "1.0.0",
+  "description": "Daily meal planning with WhatsApp notifications for the family",
+  "main": "src/server.js",
+  "scripts": {
+    "start": "node src/server.js",
+    "dev": "node --watch src/server.js"
+  },
+  "dependencies": {
+    "express": "^4.18.2",
+    "node-cron": "^3.0.3",
+    "twilio": "^4.23.0",
+    "dotenv": "^16.3.1"
+  }
+}

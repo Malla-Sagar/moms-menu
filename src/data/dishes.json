@@ -1,0 +1,209 @@
+{
+  "veg": [
+    {
+      "name": "Vankaya uppu karam",
+      "likes": ["Ramesh", "Gowthami"],
+      "dislikes": ["Siva"],
+      "noVeggiesNeeded": false,
+      "comments": ""
+    },
+    {
+      "name": "Thotakura vepudu",
+      "likes": ["Ramesh", "Gowthami"],
+      "dislikes": ["Siva"],
+      "noVeggiesNeeded": false,
+      "comments": ""
+    },
+    {
+      "name": "Tomato pappu + Aritikaya fry",
+      "likes": ["Ramesh", "Siva", "Gowthami"],
+      "dislikes": [],
+      "noVeggiesNeeded": false,
+      "comments": ""
+    },
+    {
+      "name": "Pappulsu/Sambar",
+      "likes": ["Ramesh", "Siva", "Gowthami"],
+      "dislikes": [],
+      "noVeggiesNeeded": false,
+      "comments": ""
+    },
+    {
+      "name": "Nuvvula Masala curry",
+      "likes": ["Ramesh", "Siva", "Gowthami"],
+      "dislikes": [],
+      "noVeggiesNeeded": false,
+      "comments": ""
+    },
+    {
+      "name": "Normal masala curry",
+      "likes": ["Ramesh", "Siva", "Gowthami"],
+      "dislikes": [],
+      "noVeggiesNeeded": false,
+      "comments": ""
+    },
+    {
+      "name": "Bendakaya fry + Kandipappu",
+      "likes": ["Ramesh", "Siva", "Gowthami"],
+      "dislikes": [],
+      "noVeggiesNeeded": false,
+      "comments": ""
+    },
+    {
+      "name": "Palakura pappu",
+      "likes": ["Ramesh", "Siva", "Gowthami"],
+      "dislikes": [],
+      "noVeggiesNeeded": false,
+      "comments": "Amma dorakadhu ani anocchu"
+    },
+    {
+      "name": "Chinna dumpala fry",
+      "likes": ["Ramesh", "Siva", "Gowthami"],
+      "dislikes": [],
+      "noVeggiesNeeded": false,
+      "comments": "Every Ekadashi from Telugu calendar"
+    },
+    {
+      "name": "Dumpalu odideesi fry",
+      "likes": ["Siva", "Gowthami"],
+      "dislikes": ["Ramesh"],
+      "noVeggiesNeeded": false,
+      "comments": ""
+    },
+    {
+      "name": "Gutthi vankaya",
+      "likes": ["Ramesh", "Siva", "Gowthami"],
+      "dislikes": [],
+      "noVeggiesNeeded": false,
+      "comments": ""
+    },
+    {
+      "name": "Tomato pachhadi",
+      "likes": ["Ramesh", "Siva", "Gowthami"],
+      "dislikes": [],
+      "noVeggiesNeeded": false,
+      "comments": ""
+    },
+    {
+      "name": "Pesarapappu + Aritikaya iguru",
+      "likes": ["Ramesh", "Siva"],
+      "dislikes": ["Gowthami"],
+      "noVeggiesNeeded": false,
+      "comments": ""
+    },
+    {
+      "name": "Beerakaya kandipappu",
+      "likes": ["Ramesh", "Siva", "Gowthami"],
+      "dislikes": [],
+      "noVeggiesNeeded": false,
+      "comments": "Chedu aiythay pappu antha pothaadi"
+    },
+    {
+      "name": "Tomato ballalu",
+      "likes": ["Ramesh", "Gowthami"],
+      "dislikes": ["Siva"],
+      "noVeggiesNeeded": false,
+      "comments": ""
+    },
+    {
+      "name": "Chikkukukaya + Kobbarikorlu fry",
+      "likes": ["Ramesh", "Siva", "Gowthami"],
+      "dislikes": [],
+      "noVeggiesNeeded": false,
+      "comments": ""
+    },
+    {
+      "name": "Kaboli fry",
+      "likes": ["Ramesh", "Siva", "Gowthami"],
+      "dislikes": [],
+      "noVeggiesNeeded": false,
+      "comments": ""
+    },
+    {
+      "name": "Mushroom biryani/curry",
+      "likes": ["Ramesh", "Siva", "Gowthami"],
+      "dislikes": [],
+      "noVeggiesNeeded": false,
+      "comments": ""
+    },
+    {
+      "name": "Vankaya pappu",
+      "likes": ["Ramesh", "Siva", "Gowthami"],
+      "dislikes": [],
+      "noVeggiesNeeded": false,
+      "comments": ""
+    },
+    {
+      "name": "Kandipappu kattu",
+      "likes": ["Ramesh", "Siva", "Gowthami"],
+      "dislikes": [],
+      "noVeggiesNeeded": true,
+      "comments": "No veggies needed"
+    }
+  ],
+  "nonveg": [
+    {
+      "name": "Boiled egg fry",
+      "type": "egg",
+      "likes": ["Ramesh", "Gowthami", "Sagar"],
+      "dislikes": ["Siva"],
+      "comments": ""
+    },
+    {
+      "name": "Egg bhurji",
+      "type": "egg",
+      "likes": ["Ramesh", "Siva", "Gowthami", "Sagar"],
+      "dislikes": [],
+      "comments": ""
+    },
+    {
+      "name": "Egg omelette",
+      "type": "egg",
+      "likes": ["Ramesh", "Siva", "Gowthami", "Sagar"],
+      "dislikes": [],
+      "comments": ""
+    },
+    {
+      "name": "Fish curry/fry",
+      "type": "fish",
+      "likes": ["Ramesh", "Siva", "Gowthami"],
+      "dislikes": ["Sagar"],
+      "comments": ""
+    },
+    {
+      "name": "Fish iguru/fry",
+      "type": "fish",
+      "likes": ["Ramesh", "Siva", "Gowthami"],
+      "dislikes": ["Sagar"],
+      "comments": ""
+    },
+    {
+      "name": "Fish pulusu/fry",
+      "type": "fish",
+      "likes": ["Ramesh", "Siva", "Gowthami"],
+      "dislikes": ["Sagar"],
+      "comments": ""
+    },
+    {
+      "name": "Chicken curry",
+      "type": "chicken",
+      "likes": ["Ramesh", "Siva", "Gowthami", "Sagar"],
+      "dislikes": [],
+      "comments": ""
+    },
+    {
+      "name": "Chicken biryani",
+      "type": "chicken",
+      "likes": ["Ramesh", "Siva", "Gowthami", "Sagar"],
+      "dislikes": [],
+      "comments": ""
+    },
+    {
+      "name": "Chicken pakodi",
+      "type": "chicken",
+      "likes": ["Ramesh", "Siva", "Gowthami", "Sagar"],
+      "dislikes": [],
+      "comments": ""
+    }
+  ]
+}

@@ -1,0 +1,52 @@
+{
+  "familyMembers": [
+    {
+      "name": "Aruna",
+      "role": "Amma",
+      "restrictions": ["Only eats eggs from non-veg"]
+    },
+    {
+      "name": "Ramesh",
+      "role": "Daddy",
+      "restrictions": []
+    },
+    {
+      "name": "Siva",
+      "role": "Annayya",
+      "restrictions": [],
+      "addOns": ["Pesarapappu", "Majjiga annam + Appadam", "Egg poch"]
+    },
+    {
+      "name": "Gowthami",
+      "role": "Vadina",
+      "restrictions": []
+    },
+    {
+      "name": "Sagar",
+      "role": "Self",
+      "restrictions": ["Doesn't eat fish"]
+    }
+  ],
+  "dayTypes": {
+    "Monday": "veg",
+    "Tuesday": "nonveg",
+    "Wednesday": "nonveg",
+    "Thursday": "nonveg",
+    "Friday": "veg",
+    "Saturday": "veg",
+    "Sunday": "veg"
+  },
+  "nonvegRules": {
+    "fish": { "frequency": "weekly", "times": 2 },
+    "egg": { "frequency": "weekly", "times": 1 },
+    "chicken": { "frequency": "biweekly", "times": 1 }
+  },
+  "addOns": {
+    "Siva": ["Pesarapappu", "Majjiga annam + Appadam", "Egg poch"],
+    "Ramesh": ["Nuvvulapodi + Appadala muddha"]
+  },
+  "specialDishRotation": {
+    "intervalDays": 8,
+    "description": "Every 7-10 days, suggest dishes where add-ons are needed for people who won't eat that dish"
+  }
+}
