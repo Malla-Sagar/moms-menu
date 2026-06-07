@@ -90,12 +90,12 @@ function selectNonVegDish() {
   return pickWeightedRandom(pool, recentDishes);
 }
 
-function generateMeal(date) {
+function generateMeal(date, excludeDishes = []) {
   const dayName = date.toLocaleDateString('en-US', { weekday: 'long' });
   let dayType = getDayType(dayName);
   const dishes = loadJSON('dishes.json');
   const preferences = loadJSON('preferences.json');
-  const recentDishes = getRecentDishes(5);
+  const recentDishes = [...getRecentDishes(5), ...excludeDishes];
 
   if (isEkadashi(date)) dayType = 'veg';
 
@@ -169,10 +169,13 @@ function recordMeal(meal) {
 
 function generateWeeklyPlan(startDate) {
   const plan = [];
+  const usedDishes = [];
   for (let i = 0; i < 7; i++) {
     const date = new Date(startDate);
     date.setDate(date.getDate() + i);
-    plan.push(generateMeal(date));
+    const meal = generateMeal(date, usedDishes);
+    plan.push(meal);
+    usedDishes.push(meal.dish.name);
   }
   return plan;
 }
