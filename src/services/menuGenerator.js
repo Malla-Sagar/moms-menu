@@ -58,32 +58,45 @@ function shouldSuggestSpecialDish() {
   return daysSince >= 7;
 }
 
-function selectNonVegDish() {
+function selectNonVegDish(excludeDishes = []) {
   const history = loadJSON('history.json');
   const dishes = loadJSON('dishes.json');
-  const recentDishes = getRecentDishes(14);
+  const recentDishes = [...getRecentDishes(14), ...excludeDishes];
+
+  const excludeTypes = excludeDishes.map(name => {
+    const d = dishes.nonveg.find(x => x.name === name);
+    return d ? d.type : null;
+  }).filter(Boolean);
 
   const now = new Date();
   const daysSinceChicken = history.lastChickenDate
     ? Math.floor((now - new Date(history.lastChickenDate)) / 86400000)
-    : 999;
+    : 0;
   const fishThisWeek = history.lastFishDates.filter(d => {
     const diff = Math.floor((now - new Date(d)) / 86400000);
     return diff < 7;
   }).length;
   const daysSinceEgg = history.lastEggDate
     ? Math.floor((now - new Date(history.lastEggDate)) / 86400000)
-    : 999;
+    : 0;
+
+  // Determine which types are still needed this week
+  const needsFish = fishThisWeek < 2 && !excludeTypes.includes('fish');
+  const needsEgg = daysSinceEgg >= 7 && !excludeTypes.includes('egg');
+  const needsChicken = daysSinceChicken >= 14 && !excludeTypes.includes('chicken');
 
   let pool;
-  if (daysSinceChicken >= 14) {
-    pool = dishes.nonveg.filter(d => d.type === 'chicken');
-  } else if (fishThisWeek < 2) {
+  if (needsFish) {
     pool = dishes.nonveg.filter(d => d.type === 'fish');
-  } else if (daysSinceEgg >= 7) {
+  } else if (needsEgg) {
     pool = dishes.nonveg.filter(d => d.type === 'egg');
+  } else if (needsChicken) {
+    pool = dishes.nonveg.filter(d => d.type === 'chicken');
   } else {
-    pool = dishes.nonveg.filter(d => d.type === 'fish' || d.type === 'egg');
+    // Spread across types, avoid what was already picked this week
+    const availableTypes = ['fish', 'egg', 'chicken'].filter(t => !excludeTypes.includes(t));
+    pool = dishes.nonveg.filter(d => availableTypes.includes(d.type));
+    if (pool.length === 0) pool = dishes.nonveg;
   }
 
   if (pool.length === 0) pool = dishes.nonveg;
@@ -128,7 +141,7 @@ function generateMeal(date, excludeDishes = []) {
       });
     }
   } else {
-    dish = selectNonVegDish();
+    dish = selectNonVegDish(excludeDishes);
     if (dish.type !== 'egg') {
       addOns.push({ person: 'Aruna', addon: 'Egg (she eats only eggs from non-veg)' });
     }
