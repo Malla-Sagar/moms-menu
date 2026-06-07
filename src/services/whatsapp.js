@@ -9,6 +9,10 @@ function getClient() {
   return client;
 }
 
+function getRecipients() {
+  return (process.env.WHATSAPP_TO || '').split(',').map(n => n.trim()).filter(Boolean);
+}
+
 async function sendMessage(body) {
   const twilioClient = getClient();
   if (!twilioClient) {
@@ -16,18 +20,26 @@ async function sendMessage(body) {
     return { success: true, dryRun: true };
   }
 
-  try {
-    const message = await twilioClient.messages.create({
-      from: process.env.TWILIO_WHATSAPP_FROM,
-      to: process.env.WHATSAPP_TO,
-      body
-    });
-    console.log(`[WhatsApp] Sent message SID: ${message.sid}`);
-    return { success: true, sid: message.sid };
-  } catch (err) {
-    console.error('[WhatsApp] Error sending:', err.message);
-    return { success: false, error: err.message };
+  const recipients = getRecipients();
+  const results = [];
+
+  for (const to of recipients) {
+    try {
+      const message = await twilioClient.messages.create({
+        from: process.env.TWILIO_WHATSAPP_FROM,
+        to,
+        body
+      });
+      console.log(`[WhatsApp] Sent to ${to}, SID: ${message.sid}`);
+      results.push({ to, success: true, sid: message.sid });
+    } catch (err) {
+      console.error(`[WhatsApp] Failed to send to ${to}:`, err.message);
+      results.push({ to, success: false, error: err.message });
+    }
   }
+
+  const allSuccess = results.every(r => r.success);
+  return { success: allSuccess, results };
 }
 
 function parseIncomingMessage(body) {

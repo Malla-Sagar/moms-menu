@@ -16,6 +16,12 @@ function getDayType(dayName) {
   return preferences.dayTypes[dayName] || 'veg';
 }
 
+function isEkadashi(date) {
+  const dateStr = date.toISOString().split('T')[0];
+  const ekadashi = loadJSON('ekadashi.json');
+  return ekadashi.dates.includes(dateStr);
+}
+
 function getRecentDishes(days = 7) {
   const history = loadJSON('history.json');
   const cutoff = new Date();
@@ -86,24 +92,32 @@ function selectNonVegDish() {
 
 function generateMeal(date) {
   const dayName = date.toLocaleDateString('en-US', { weekday: 'long' });
-  const dayType = getDayType(dayName);
+  let dayType = getDayType(dayName);
   const dishes = loadJSON('dishes.json');
   const preferences = loadJSON('preferences.json');
   const recentDishes = getRecentDishes(5);
+
+  if (isEkadashi(date)) dayType = 'veg';
 
   let dish;
   let addOns = [];
 
   if (dayType === 'veg') {
-    const useSpecial = shouldSuggestSpecialDish();
-    let pool;
-    if (useSpecial) {
-      pool = dishes.veg.filter(d => d.dislikes.length > 0);
-      if (pool.length === 0) pool = dishes.veg;
-    } else {
-      pool = dishes.veg;
+    if (isEkadashi(date)) {
+      dish = dishes.veg.find(d => d.name === 'Chinna dumpala fry');
     }
-    dish = pickWeightedRandom(pool, recentDishes);
+
+    if (!dish) {
+      const useSpecial = shouldSuggestSpecialDish();
+      let pool;
+      if (useSpecial) {
+        pool = dishes.veg.filter(d => d.dislikes.length > 0 && d.name !== 'Chinna dumpala fry');
+        if (pool.length === 0) pool = dishes.veg.filter(d => d.name !== 'Chinna dumpala fry');
+      } else {
+        pool = dishes.veg.filter(d => d.name !== 'Chinna dumpala fry');
+      }
+      dish = pickWeightedRandom(pool, recentDishes);
+    }
 
     if (dish.dislikes.length > 0) {
       dish.dislikes.forEach(person => {
@@ -128,7 +142,8 @@ function generateMeal(date) {
     }
   }
 
-  return { date: date.toISOString().split('T')[0], dayName, dayType, dish, addOns };
+  const ekadashi = isEkadashi(date);
+  return { date: date.toISOString().split('T')[0], dayName, dayType, dish, addOns, ekadashi };
 }
 
 function recordMeal(meal) {
@@ -163,8 +178,9 @@ function generateWeeklyPlan(startDate) {
 }
 
 function formatMealMessage(meal) {
-  let msg = `*${meal.dayName} Menu (${meal.date})*\n\n`;
-  msg += `${meal.dayType === 'veg' ? '🥬' : '🍗'} *${meal.dish.name}*\n`;
+  let msg = `*${meal.dayName} Menu (${meal.date})*\n`;
+  if (meal.ekadashi) msg += `🙏 *Ekadashi today*\n`;
+  msg += `\n${meal.dayType === 'veg' ? '🥬' : '🍗'} *${meal.dish.name}*\n`;
 
   if (meal.dish.comments) {
     msg += `📝 ${meal.dish.comments}\n`;
